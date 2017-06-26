@@ -62,41 +62,12 @@ public class Login {
             pst.setString(1, username);
             rs = pst.executeQuery();
             if (rs.next()) {
-                // check value of IsAdmin column
+                // check value of IsAdmin column from the resultSet
                 // if IsAdmin is true then return true
-                // else return false 
-                //kyaa btauu agr database ka value or user jo logi lkarte time dalega agar vo dono same 
-   
-            
-            
-            
-            
-            
-            // mera code explain karne nahi bola
-            // bc me hi likha hu mujhe malum hai kya kar raha hai
-            //areee
-        
-                                
-                                
-                                
-                                
-                                /// tera galti bata dukkar
-                int adminVal = rs.getInt("IsAdmin");
-                conn.close();
-                if(adminVal == 1)
-                    return true;
-                else
-                    return false;
-               
+                // else return false
             }
-            else{
-               
-                conn.close();
-                
-                // I WROTE THIS FUNCTION ON SUNDAY
-                // Do YOU WHANT ME TO DELETE IT
-//                SHOULD I MAKE IT THE SAME AS IT WAS BEFORE I MODIFIED IT SO YOU CAN BETTWER UNDERSTAND IT
-                     
+            else{             
+                conn.close();                   
             }
         }
         
