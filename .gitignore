@@ -1,0 +1,8 @@
+/bootstrap-4.0.0-alpha.6-dist/*
+/lib/
+/build/web/WEB-INF/classes/*.class
+/build/web/WEB-INF/lib/
+/build/web/WEB-INF/classes/
+/build/
+/dist/OnlineRecharge.war
+/nbproject/
