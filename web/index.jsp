@@ -32,7 +32,7 @@
                         <label for="password">Password</label>
                         <input type="password" class="form-control" name="password" placeholder="password" id="password"/>
                     </div>
-                    
+                   
                     <div class="text-danger"> ${ message } </div> 
                     <input type="submit"  class="btn btn-primary" value="LOGIN" />
                     <a href="signup.jsp" class="btn btn-success" role="button">Sign Up</a>

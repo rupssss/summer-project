@@ -17,25 +17,22 @@ import javax.servlet.http.HttpSession;
  *
  * @author Rupali
  */
-@WebServlet(urlPatterns = {"/SevletWelcome"})
-public class SevletWelcome extends HttpServlet {
-    
-    protected void processRequest(HttpServletRequest request, 
-            HttpServletResponse response)
+@WebServlet(urlPatterns = {"/ServletLogout"})
+public class ServletLogout extends HttpServlet {
+
+   
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         try {
-//            dont create a new session if session is not present 
-//            cause this is the homepage page 
-//            session should be created only in login
-            HttpSession session = request.getSession(false); 
-            String username = session.getAttribute("username").toString();//
-            response.sendRedirect("servletWelcomeUser");
-                   
-           
-        } finally {
-            out.close(); 
+            HttpSession session = request.getSession(false);
+		session.invalidate(); // YOU DESTR0Y THE SESSION <-- THIS DESTROYS SESSION ohh got it
+// when USER LOGS OUT YOU SHOULD ALWAYS DESTROY SESSION 
+               response.sendRedirect("index.jsp");//for logout yes but im not getting exactly how to do 
+
+        } finally {//now what bolllll
+            out.close();
         }
     }
 

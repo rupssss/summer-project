@@ -62,6 +62,13 @@ public class Login {
             pst.setString(1, username);
             rs = pst.executeQuery();
             if (rs.next()) {
+                 int adminval=rs.getInt("IsAdmin");
+                 if(adminval == 1)
+                     return true;
+                 else
+                     return false;
+                
+                
                 // check value of IsAdmin column from the resultSet
                 // if IsAdmin is true then return true
                 // else return false

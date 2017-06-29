@@ -27,11 +27,15 @@
                        <li ><a href="#" data-toggle="tab">View User</a></li>
                         <li ><a href="#" data-toggle="tab">View Transaction</a></li>
                          <li ><a href="#" data-toggle="tab">View Feedback</a></li>
-                          <li ><a href="#" data-toggle="tab">Logout</a></li>
+                         <form action="/logout" method="post" style="display: inline">
+                            <input type="submit" value="Logout" />
+                        </form>
              </ul>
           
         </div>
                 </div>
+            </form>
+            
 
        
 </body>

@@ -16,7 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.RequestDispatcher;
 
 /**
- *maat
+ * maat
+ *
  * @author Rupali
  */
 @WebServlet("/ServletLogin")
@@ -28,28 +29,34 @@ public class ServletLogin extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         RequestDispatcher rd;
-        if (Login.validate(username, password)) {
+        if (Login.validate(username, password)) {//for validating usernam and password,if username and passwprd is valid
+            //then it will validate is  enterted user is admin 
+
             // here you were only checking whether user is Valid or not
             // if user is valid then you are showing the admin page
             // you were NOT checking whether USER is ADMIN
-
-            rd = request.getRequestDispatcher("welcome.jsp");
-            request.setAttribute("isAdmin", true);
-            
-        } else {
+            if (Login.isAdmin(username)) 
+                rd = request.getRequestDispatcher("welcome.jsp");//if hes is admin then it wil show welcome
+       
+            else 
+                
+                rd = request.getRequestDispatcher("welcomeUser.jsp");//else user 
+            }
+        else{
+           
             // if user is invalid then you are showing the home page 
             // if user is invalid then you should show 
             // login page again with some error message
-            rd = request.getRequestDispatcher("welcomeUser.jsp");
+            String message;
+            request.setAttribute("message", "There's somthng occured wrong");
+            rd = request.getRequestDispatcher("index.jsp");
             request.setAttribute("isAdmin", false);
-        }
-        rd.forward(request, response);
+          
+                    }
         
-    }
-   
-   
+            rd.forward(request, response);
 
-            
+    }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

@@ -17,51 +17,45 @@ import javax.servlet.http.HttpSession;
  *
  * @author Rupali
  */
-@WebServlet(urlPatterns = {"/SevletWelcome"})
-public class SevletWelcome extends HttpServlet {
-    
-    protected void processRequest(HttpServletRequest request, 
-            HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-//            dont create a new session if session is not present 
-//            cause this is the homepage page 
-//            session should be created only in login
-            HttpSession session = request.getSession(false); 
-            String username = session.getAttribute("username").toString();//
-            response.sendRedirect("servletWelcomeUser");
-                   
-           
-        } finally {
-            out.close(); 
-        }
-    }
+@WebServlet(urlPatterns = {"/servletWelcomeUser"})
+public class servletWelcomeUser extends HttpServlet {
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        try {
+            
+            HttpSession session=request.getSession();
+            String username=(String)session.getAttribute("username");// 
+//            System.out.println(username);
+         
+    //logout activate karna hai..button ke click par ogout honaa chahiye
+                    
+            
+            
+           
+        } finally {
+            out.close();
+        }
+    }
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
